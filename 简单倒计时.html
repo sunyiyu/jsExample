@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>简单倒计时</title>
+</head>
+<body>
+
+<p>点击按钮，在等待，<span id='num'> 3 </span>秒后弹出 "Hello"。</p>
+<button onclick="myFunction()">点我</button>
+<script>
+    var aa = document.getElementById('num');
+
+    function myFunction(){
+        var num = 2;
+        var nnn = setInterval(function () {
+            if(num >= 0){
+                aa.innerHTML = num--;
+            }else{
+                clearInterval(nnn);
+                alert('1');
+            }
+        },1000);
+    }
+</script>
+
+</body>
+</html>
