@@ -11,7 +11,6 @@ let alet = ()=>{
     node.id = 'myModal';
     node.setAttribute('class','modal');
     document.body.appendChild(node);
-    node.setAttribute('opacity', '1');
 
     let colse = document.querySelector('.close');
     colse.addEventListener('click',function () {

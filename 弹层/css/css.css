@@ -11,12 +11,15 @@
     background-color: rgba(0,0,0,0.4);
     -webkit-animation: fade 4s ;
     animation: fide 0.5s ;
-    opacity: 1;
 }
 
 @keyframes fide {
-    from{opacity: 0.4}
-    to{opacity: 1}
+    from {-webkit-transform:scale(0)}
+    to {-webkit-transform:scale(1)}
+}
+@-webkit-keyframes fide {
+    from {-webkit-transform:scale(0)}
+    to {-webkit-transform:scale(1)}
 }
 
 .modal input{
