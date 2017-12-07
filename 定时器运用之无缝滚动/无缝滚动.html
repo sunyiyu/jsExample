@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+<style>
+	*{margin:0; padding:0;}
+	.mydiv{width:1000px; height:108px; margin:100px auto;}
+	#div1{width:712px; height:108px; position:relative; background:red; overflow:hidden; float:left;}
+	#div1 ul{position:absolute; left:0; top:0;}
+	#div1 ul li{float:left; list-style:none; width:178px; height:108px;}
+	a{display:inline-block; float:left; margin:20px auto;}
+</style>
+<script>
+	window.onload=function(){
+		var oDiv1=document.getElementById('div1');
+		var oUl=oDiv1.getElementsByTagName('ul')[0];
+		var aLi=document.getElementsByTagName('li');
+		var timer=null;
+		var speed=4;
+		var oA1=document.getElementById('a1');
+		var oA2=document.getElementById('a2');
+		
+		oUl.innerHTML=oUl.innerHTML+oUl.innerHTML;
+		oUl.style.width=aLi[0].offsetWidth*aLi.length+'px';
+		function move(){
+			if(oUl.offsetLeft<-oUl.offsetWidth/2){
+				oUl.style.left='0';
+			}
+			if(oUl.offsetLeft>0){
+					oUl.style.left=-oUl.offsetWidth/2+'px';
+			}
+			oUl.style.left=oUl.offsetLeft+speed+'px';
+		}
+		timer=setInterval(move,30)
+		
+		oDiv1.onmouseover=function(){
+			clearInterval(timer);	
+		}
+		
+		oDiv1.onmouseout=function(){
+			timer=setInterval(move,30)
+		}
+		
+		oA1.onclick=function(){
+			speed=-4;	
+		}
+		
+		oA2.onclick=function(){
+			speed=4;	
+		}
+		
+	}
+</script>
+</head>
+
+<body>
+	<div class="mydiv">
+		<a id="a1"><img src="img/btn_left.jpg"></a>
+		<div id="div1">
+			<ul>
+				<li><img src="img/1.jpg"></li>
+				<li><img src="img/2.jpg"></li>
+				<li><img src="img/3.jpg"></li>
+				<li><img src="img/4.jpg"></li>				
+			</ul>
+		</div>
+		<a id="a2"><img src="img/btn_right.jpg"></a>
+	</div>
+</body>
+</html>
