@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
+    <style type="text/css">
+        thead th{width: 100px;text-align: center;}
+    </style>
+</head>
+
+<body>
+<label>姓名：</label><input type="text" id="username" />
+<label>备注：</label><input type="text" id="content" />
+<input type="button" id="send" value="点击" />
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>姓名</th>
+        <th>备注</th>
+    </tr>
+    </thead>
+    <tbody id="tb">
+
+    </tbody>
+</table>
+</body>
+<script type="text/javascript">
+    $(function() {
+        $('#username').keyup(function() {
+            var n=$(this).val();
+            if(n!=''){
+                $.ajax({
+                    type: "GET",
+                    url: "js/text.json",
+                    data:{n:n},
+                    dataType: "json",
+                    success: function(data) {
+                        $("#tb").empty();
+                        var str = "";
+                        $.each(data,function(commendIndex,comment){
+                            if(comment['username'].indexOf(n)>=0){
+                                str +='<tr><th>'+comment['ID']+'</th><th>'+comment['username']+'</th><th>'+comment['content']+'</th></tr>';
+                            }
+                        });
+                        $("#tb").append(str);
+                    }
+                });
+            }else{
+                $("#tb").empty()
+            }
+        });
+    });
+</script>
+
+</html>
