@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>淘宝ajax数据调用实例-完整版</title>
+    <link rel="stylesheet" href="css/cssreset.css">
+    <style type="text/css">
+        body {
+            background-color: #FFC411;
+        }
+
+        .ZG_body {
+            width: 1000px;
+            margin: 0 auto;
+        }
+
+        .ZG_item {
+            width: 243px;
+            height: 147px;
+            margin: 0 6px 6px 0;
+            background: #fff;
+            float: left;
+            position: relative;
+        }
+
+        .ZG_item a {
+            display: block;
+            text-decoration: none;
+        }
+
+        .ZG_item .ZG_text {
+            width: 96px;
+            height: 147px;
+            float: left;
+            background: #fff;
+            overflow: hidden;
+        }
+
+        .ZG_item .ZG_text .ZG_text_title {
+            width: 80px;
+            margin: 10px auto 0;
+            overflow: hidden;
+            font-size: 13px;
+            height: 36px;
+            line-height: 18px;
+            color: #000;
+        }
+
+        .ZG_item .ZG_text .ZG_jpj {
+            width: 42px;
+            height: 16px;
+            line-height: 16px;
+            background: #fa372d;
+            border-radius: 1px;
+            font-size: 12px;
+            text-align: center;
+            color: #fff;
+            margin: 0 0 0 10px;
+        }
+
+        .ZG_item .ZG_text .ZG_nowprice {
+            height: 24px;
+            line-height: 24px;
+            overflow: hidden;
+            text-indent: 10px;
+        }
+
+        .ZG_item .ZG_text .ZG_nowprice .ZG_current_price {
+            width: 114px;
+            line-height: 28px;
+            color: #ff4c4d;
+            font-size: 16px;
+            overflow: hidden;
+            font-weight: 700;
+        }
+
+        .ZG_item .ZG_text .ZG_nowprice .ZG_current_price span {
+            font-size: 10px;
+        }
+
+        .ZG_item .ZG_text .ZG_price {
+            text-indent: 10px;
+            height: 14px;
+            font-size: 10px;
+            line-height: 14px;
+            color: #a0a0a0;
+            text-decoration: line-through;
+        }
+
+        .ZG_item .ZG_text .ZG_qu {
+            width: 70px;
+            height: 28px;
+            margin: 6px 0 0 10px;
+        }
+
+        .ZG_item .ZG_img {
+            width: 147px;
+            height: 147px;
+            float: left;
+        }
+    </style>
+</head>
+<body>
+
+<!--列表的父容器-->
+<div class="ZG_body cf">
+</div>
+
+<b style="font-size: 20px; color: #FA372D">本页面请于http协议环境下运行，本地运行图片可能无法显示</b>
+
+<h1>总结：</h1>
+<h2>ajax</h2>
+<p>1.浏览器发起请求(浏览器继续做其他处理 同步/异步)</p>
+<p>2.浏览器等待结果</p>
+<p>3.后端脚本的结果出来之后调用回调函数</p>
+<p>4.在回调函数中进行一些处理（DOM操作让页面发生变化）</p>
+
+<br />
+<h2>其他一些和后端的交互形式：</h2>
+<p>调用后端返回动态生成的包含数据的js脚本</p>
+<p>表单提交</p>
+<p>websocket (html5) 案例：实时在线游戏、大屏互动</p>
+
+<script type="text/javascript" src="js/jquery.js"></script><!-- 加载jQuery代码库 -->
+<script type="text/javascript">
+    $(function () {
+        //调用ajax开始
+        $.ajax({
+            url: "https://tce.taobao.com/api/mget.htm",//ajax调用的接口地址
+            data: {//发送给服务器的数据
+                src: 'pc',//约定的数据参数，调用来源
+                tce_sid: 827753 //约定的数据参数，sid。 另外提供活动页中另外一些楼层sid供大家练习 827788,834044,827815,827816
+            },
+            dataType: "jsonp",//定义请求的数据类型
+            success: function (data) {
+                console.log("结果返回了，看看异步输出顺序 我是1");
+                console.log(data);
+                //操作DOM 把数据拼接好 放入页面中展示
+                if(data.success) {
+                    //成功处理
+                    var result = data.result;
+                    var list = result[827753].result;
+                    var html = '';
+                    for(var i in list) {
+                        var item = list[i];
+                        html += '\
+                        <div class="ZG_item">\
+                            <a href="' + item.item_url + '" target="_blank">\
+                                <div class="ZG_text">\
+                                    <p class="ZG_text_title">' + item.item_title + '</p>\
+                                    <div class="ZG_jpj">金牌价</div>\
+                                    <div class="ZG_nowprice">\
+                                        <p class="ZG_current_price"><span>¥</span>' + item.item_current_price + '</p>\
+                                    </div>\
+                                    <p class="ZG_price">¥' + item.item_price + '</p>\
+                                    <img class="ZG_qu" width="70" height="28" src="//img.alicdn.com/tps/TB1gLpPLXXXXXbvaXXXXXXXXXXX-70-28.jpg">\
+                                </div>\
+                                <img class="ZG_img" width="230" height="230" src="' + item.item_pic + '">\
+                            </a>\
+                        </div>';
+                    }
+                    $('.ZG_body').append(html);//把拼接好的代码放入ZG_body标签中
+                } else {
+                    alert("出错了，请刷新页面");//如果出错，给出错误提示
+                }
+            },
+            error: function () {
+                alert("出错了，请刷新页面");//如果出错，给出错误提示，比如后端返回的并不是正常的json格式(json格式不完整、或者传回其他数据格式)，前端无法正常解析数据
+            }
+
+        });
+        console.log("看看异步输出顺序 我是2");
+    });
+</script>
+</body>
+</html>

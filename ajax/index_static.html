@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>淘宝ajax数据调用实例-静态页面</title>
+    <link rel="stylesheet" href="css/cssreset.css">
+    <style type="text/css">
+        body {
+            background-color: #FFC411;
+        }
+
+        .ZG_body {
+            width: 1000px;
+            margin: 0 auto;
+        }
+
+        .ZG_item {
+            width: 243px;
+            height: 147px;
+            margin: 0 6px 6px 0;
+            background: #fff;
+            float: left;
+            position: relative;
+        }
+
+        .ZG_item a {
+            display: block;
+            text-decoration: none;
+        }
+
+        .ZG_item .ZG_text {
+            width: 96px;
+            height: 147px;
+            float: left;
+            background: #fff;
+            overflow: hidden;
+        }
+
+        .ZG_item .ZG_text .ZG_text_title {
+            width: 80px;
+            margin: 10px auto 0;
+            overflow: hidden;
+            font-size: 13px;
+            height: 36px;
+            line-height: 18px;
+            color: #000;
+        }
+
+        .ZG_item .ZG_text .ZG_jpj {
+            width: 42px;
+            height: 16px;
+            line-height: 16px;
+            background: #fa372d;
+            border-radius: 1px;
+            font-size: 12px;
+            text-align: center;
+            color: #fff;
+            margin: 0 0 0 10px;
+        }
+
+        .ZG_item .ZG_text .ZG_nowprice {
+            height: 24px;
+            line-height: 24px;
+            overflow: hidden;
+            text-indent: 10px;
+        }
+
+        .ZG_item .ZG_text .ZG_nowprice .ZG_current_price {
+            width: 114px;
+            line-height: 28px;
+            color: #ff4c4d;
+            font-size: 16px;
+            overflow: hidden;
+            font-weight: 700;
+        }
+
+        .ZG_item .ZG_text .ZG_nowprice .ZG_current_price span {
+            font-size: 10px;
+        }
+
+        .ZG_item .ZG_text .ZG_price {
+            text-indent: 10px;
+            height: 14px;
+            font-size: 10px;
+            line-height: 14px;
+            color: #a0a0a0;
+            text-decoration: line-through;
+        }
+
+        .ZG_item .ZG_text .ZG_qu {
+            width: 70px;
+            height: 28px;
+            margin: 6px 0 0 10px;
+        }
+
+        .ZG_item .ZG_img {
+            width: 147px;
+            height: 147px;
+            float: left;
+        }
+    </style>
+</head>
+<body>
+
+<!--列表的父容器-->
+<div class="ZG_body cf">
+    <div class="ZG_item">
+        <a href="#" target="_blank">
+        <div class="ZG_text">
+            <p class="ZG_text_title">【国行】 Withings Activite 瑞士级智能手表运动睡眠追踪</p>
+            <div class="ZG_jpj">金牌价</div>
+            <div class="ZG_nowprice">
+                <p class="ZG_current_price"><span>¥</span>2916.00</p>
+            </div>
+            <p class="ZG_price">¥3888.00</p>
+            <img class="ZG_qu" width="70" height="28" src="//img.alicdn.com/tps/TB1gLpPLXXXXXbvaXXXXXXXXXXX-70-28.jpg">
+        </div>
+        <img class="ZG_img" width="230" height="230" src="//gw.alicdn.com/bao/uploaded/TB1AFRALXXXXXX8apXXSutbFXXX.jpg"> </a>
+    </div>
+    <div class="ZG_item">
+        <a href="#" target="_blank">
+            <div class="ZG_text">
+                <p class="ZG_text_title">【国行】 Withings Activite 瑞士级智能手表运动睡眠追踪</p>
+                <div class="ZG_jpj">金牌价</div>
+                <div class="ZG_nowprice">
+                    <p class="ZG_current_price"><span>¥</span>2916.00</p>
+                </div>
+                <p class="ZG_price">¥3888.00</p>
+                <img class="ZG_qu" width="70" height="28" src="//img.alicdn.com/tps/TB1gLpPLXXXXXbvaXXXXXXXXXXX-70-28.jpg">
+            </div>
+            <img class="ZG_img" width="230" height="230" src="//gw.alicdn.com/bao/uploaded/TB1AFRALXXXXXX8apXXSutbFXXX.jpg"> </a>
+    </div>
+    <div class="ZG_item">
+        <a href="#" target="_blank">
+            <div class="ZG_text">
+                <p class="ZG_text_title">【国行】 Withings Activite 瑞士级智能手表运动睡眠追踪</p>
+                <div class="ZG_jpj">金牌价</div>
+                <div class="ZG_nowprice">
+                    <p class="ZG_current_price"><span>¥</span>2916.00</p>
+                </div>
+                <p class="ZG_price">¥3888.00</p>
+                <img class="ZG_qu" width="70" height="28" src="//img.alicdn.com/tps/TB1gLpPLXXXXXbvaXXXXXXXXXXX-70-28.jpg">
+            </div>
+            <img class="ZG_img" width="230" height="230" src="//gw.alicdn.com/bao/uploaded/TB1AFRALXXXXXX8apXXSutbFXXX.jpg"> </a>
+    </div>
+    <div class="ZG_item">
+        <a href="#" target="_blank">
+            <div class="ZG_text">
+                <p class="ZG_text_title">【国行】 Withings Activite 瑞士级智能手表运动睡眠追踪</p>
+                <div class="ZG_jpj">金牌价</div>
+                <div class="ZG_nowprice">
+                    <p class="ZG_current_price"><span>¥</span>2916.00</p>
+                </div>
+                <p class="ZG_price">¥3888.00</p>
+                <img class="ZG_qu" width="70" height="28" src="//img.alicdn.com/tps/TB1gLpPLXXXXXbvaXXXXXXXXXXX-70-28.jpg">
+            </div>
+            <img class="ZG_img" width="230" height="230" src="//gw.alicdn.com/bao/uploaded/TB1AFRALXXXXXX8apXXSutbFXXX.jpg"> </a>
+    </div>
+    <div class="ZG_item">
+        <a href="#" target="_blank">
+            <div class="ZG_text">
+                <p class="ZG_text_title">【国行】 Withings Activite 瑞士级智能手表运动睡眠追踪</p>
+                <div class="ZG_jpj">金牌价</div>
+                <div class="ZG_nowprice">
+                    <p class="ZG_current_price"><span>¥</span>2916.00</p>
+                </div>
+                <p class="ZG_price">¥3888.00</p>
+                <img class="ZG_qu" width="70" height="28" src="//img.alicdn.com/tps/TB1gLpPLXXXXXbvaXXXXXXXXXXX-70-28.jpg">
+            </div>
+            <img class="ZG_img" width="230" height="230" src="//gw.alicdn.com/bao/uploaded/TB1AFRALXXXXXX8apXXSutbFXXX.jpg"> </a>
+    </div>
+    <div class="ZG_item">
+        <a href="#" target="_blank">
+            <div class="ZG_text">
+                <p class="ZG_text_title">【国行】 Withings Activite 瑞士级智能手表运动睡眠追踪</p>
+                <div class="ZG_jpj">金牌价</div>
+                <div class="ZG_nowprice">
+                    <p class="ZG_current_price"><span>¥</span>2916.00</p>
+                </div>
+                <p class="ZG_price">¥3888.00</p>
+                <img class="ZG_qu" width="70" height="28" src="//img.alicdn.com/tps/TB1gLpPLXXXXXbvaXXXXXXXXXXX-70-28.jpg">
+            </div>
+            <img class="ZG_img" width="230" height="230" src="//gw.alicdn.com/bao/uploaded/TB1AFRALXXXXXX8apXXSutbFXXX.jpg"> </a>
+    </div>
+    <div class="ZG_item">
+        <a href="#" target="_blank">
+            <div class="ZG_text">
+                <p class="ZG_text_title">【国行】 Withings Activite 瑞士级智能手表运动睡眠追踪</p>
+                <div class="ZG_jpj">金牌价</div>
+                <div class="ZG_nowprice">
+                    <p class="ZG_current_price"><span>¥</span>2916.00</p>
+                </div>
+                <p class="ZG_price">¥3888.00</p>
+                <img class="ZG_qu" width="70" height="28" src="//img.alicdn.com/tps/TB1gLpPLXXXXXbvaXXXXXXXXXXX-70-28.jpg">
+            </div>
+            <img class="ZG_img" width="230" height="230" src="//gw.alicdn.com/bao/uploaded/TB1AFRALXXXXXX8apXXSutbFXXX.jpg"> </a>
+    </div>
+    <div class="ZG_item">
+        <a href="#" target="_blank">
+            <div class="ZG_text">
+                <p class="ZG_text_title">【国行】 Withings Activite 瑞士级智能手表运动睡眠追踪</p>
+                <div class="ZG_jpj">金牌价</div>
+                <div class="ZG_nowprice">
+                    <p class="ZG_current_price"><span>¥</span>2916.00</p>
+                </div>
+                <p class="ZG_price">¥3888.00</p>
+                <img class="ZG_qu" width="70" height="28" src="//img.alicdn.com/tps/TB1gLpPLXXXXXbvaXXXXXXXXXXX-70-28.jpg">
+            </div>
+            <img class="ZG_img" width="230" height="230" src="//gw.alicdn.com/bao/uploaded/TB1AFRALXXXXXX8apXXSutbFXXX.jpg"> </a>
+    </div>
+    <div class="ZG_item">
+        <a href="#" target="_blank">
+            <div class="ZG_text">
+                <p class="ZG_text_title">【国行】 Withings Activite 瑞士级智能手表运动睡眠追踪</p>
+                <div class="ZG_jpj">金牌价</div>
+                <div class="ZG_nowprice">
+                    <p class="ZG_current_price"><span>¥</span>2916.00</p>
+                </div>
+                <p class="ZG_price">¥3888.00</p>
+                <img class="ZG_qu" width="70" height="28" src="//img.alicdn.com/tps/TB1gLpPLXXXXXbvaXXXXXXXXXXX-70-28.jpg">
+            </div>
+            <img class="ZG_img" width="230" height="230" src="//gw.alicdn.com/bao/uploaded/TB1AFRALXXXXXX8apXXSutbFXXX.jpg"> </a>
+    </div>
+    <div class="ZG_item">
+        <a href="#" target="_blank">
+            <div class="ZG_text">
+                <p class="ZG_text_title">【国行】 Withings Activite 瑞士级智能手表运动睡眠追踪</p>
+                <div class="ZG_jpj">金牌价</div>
+                <div class="ZG_nowprice">
+                    <p class="ZG_current_price"><span>¥</span>2916.00</p>
+                </div>
+                <p class="ZG_price">¥3888.00</p>
+                <img class="ZG_qu" width="70" height="28" src="//img.alicdn.com/tps/TB1gLpPLXXXXXbvaXXXXXXXXXXX-70-28.jpg">
+            </div>
+            <img class="ZG_img" width="230" height="230" src="//gw.alicdn.com/bao/uploaded/TB1AFRALXXXXXX8apXXSutbFXXX.jpg"> </a>
+    </div>
+    <div class="ZG_item">
+        <a href="#" target="_blank">
+            <div class="ZG_text">
+                <p class="ZG_text_title">【国行】 Withings Activite 瑞士级智能手表运动睡眠追踪</p>
+                <div class="ZG_jpj">金牌价</div>
+                <div class="ZG_nowprice">
+                    <p class="ZG_current_price"><span>¥</span>2916.00</p>
+                </div>
+                <p class="ZG_price">¥3888.00</p>
+                <img class="ZG_qu" width="70" height="28" src="//img.alicdn.com/tps/TB1gLpPLXXXXXbvaXXXXXXXXXXX-70-28.jpg">
+            </div>
+            <img class="ZG_img" width="230" height="230" src="//gw.alicdn.com/bao/uploaded/TB1AFRALXXXXXX8apXXSutbFXXX.jpg"> </a>
+    </div>
+    <div class="ZG_item">
+        <a href="#" target="_blank">
+            <div class="ZG_text">
+                <p class="ZG_text_title">【国行】 Withings Activite 瑞士级智能手表运动睡眠追踪</p>
+                <div class="ZG_jpj">金牌价</div>
+                <div class="ZG_nowprice">
+                    <p class="ZG_current_price"><span>¥</span>2916.00</p>
+                </div>
+                <p class="ZG_price">¥3888.00</p>
+                <img class="ZG_qu" width="70" height="28" src="//img.alicdn.com/tps/TB1gLpPLXXXXXbvaXXXXXXXXXXX-70-28.jpg">
+            </div>
+            <img class="ZG_img" width="230" height="230" src="//gw.alicdn.com/bao/uploaded/TB1AFRALXXXXXX8apXXSutbFXXX.jpg"> </a>
+    </div>
+</div>
+
+</body>
+</html>
